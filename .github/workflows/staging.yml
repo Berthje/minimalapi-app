@@ -1,9 +1,9 @@
-name: Build and Deploy to Production
+name: Build and Deploy to Staging
 
 on:
   push:
     branches:
-      - production
+      - staging
 
 jobs:
   build:
