@@ -27,11 +27,14 @@ jobs:
             - name: Publish
               run: dotnet publish -c Release -o ./publish
 
-            - name: Archive Production Artifacts
+            - name: Create Zip File
+              run: zip -r app.zip ./publish
+
+            - name: Upload Artifact
               uses: actions/upload-artifact@v3
               with:
                   name: app
-                  path: ./publish
+                  path: app.zip
 
     deploy:
         needs: build
@@ -41,7 +44,7 @@ jobs:
               uses: actions/download-artifact@v3
               with:
                   name: app
-                  path: ./publish
+                  path: ./
 
             - name: Login via Azure CLI
               uses: azure/login@v2
@@ -51,7 +54,7 @@ jobs:
 
             - name: Deploy to Azure Web App
               run: |
-                az webapp deploy --resource-group berth-rg-development-westeurope-01 \
-                --name berth-app-development-westeurope-01 \
-                --src-path ./publish \
-                --type zip
+                  az webapp deploy --resource-group berth-rg-development-westeurope-01 \
+                  --name berth-app-development-westeurope-01 \
+                  --src-path app.zip \
+                  --type zip
