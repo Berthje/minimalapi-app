@@ -48,6 +48,6 @@ jobs:
 
       - name: Deploy to Azure Web App
         run: |
-          az webapp deploy --resource-group yourlastname-rg-development-westeurope-01 \
-          --name yourlastname-app-development-westeurope-01 \
+          az webapp deploy --resource-group berth-rg-development-westeurope-01 \
+          --name berth-app-development-westeurope-01 \
           --src-path ./publish
