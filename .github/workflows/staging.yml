@@ -51,6 +51,7 @@ jobs:
 
             - name: Deploy to Azure Web App
               run: |
-                  az webapp deploy --resource-group berth-rg-development-westeurope-01 \
-                  --name berth-app-development-westeurope-01 \
-                  --src-path ./publish
+                az webapp deploy --resource-group berth-rg-development-westeurope-01 \
+                --name berth-app-development-westeurope-01 \
+                --src-path ./publish \
+                --type zip
