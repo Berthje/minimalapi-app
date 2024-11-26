@@ -43,7 +43,7 @@ jobs:
                   name: app
                   path: ./publish
 
-            - name: Login via Azure CLI v2
+            - name: Login via Azure CLI
               uses: azure/login@v2
               with:
                   creds: ${{ secrets.AZURE_CREDENTIALS }}
